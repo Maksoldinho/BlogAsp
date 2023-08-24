@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BeachVolley</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BlogAsp.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="border-bottom border-dark">
+        <div class="d-flex flex-row">
+        <img class="img-fluid h-auto"/>
+        <h1 class="align-self-center">BeachVolley</h1>
+        <div class="ms-lg-auto ps-4 p-2 d-flex flex-row justify-content-between w-50">
+
+        @if(LoggedInUser.isAdmin){
+            <a class="nav-link text-dark p-2 display-6" asp-controller="News" asp-action="AdminIndex">EditNews</a>
+        }
+            <a class="nav-link text-dark p-2 display-6" asp-controller="News" asp-action="Index">News</a>
+            <a class="nav-link text-dark p-2 display-6" asp-controller="" asp-action="Index">Tournaments</a>
+            <a class="nav-link text-dark p-2 display-6" asp-controller="" asp-action="Index">About us</a>
+
+       
+                @if (LoggedInUser.IsLoggedIn)
+                {
+                    <a style="font-size:24px; text-decoration:none;" class="align-self-center" asp-controller="Profile" asp-action="Index">@LoggedInUser.UserName.ToString()</a>
+                }
+                else{
+                <a type="button" class="btn btn-outline-dark" style="width:150px; font-size:28px;" asp-controller="Auth" asp-action="Index">Log in</a>
+               }
+        
+        </div>
+           
+
+        </div>
+        
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

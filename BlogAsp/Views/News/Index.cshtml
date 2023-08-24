@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BlogAsp.Models.News_>
+
+@{
+    ViewData["Title"] = "BeachVolley";
+}
+
+<h1 class="text-center mt-3">Recent News</h1>
+<!--
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+-->
+
+
+
+
+    @foreach(var item in Model){
+    <section class="mt-5 d-flex flex-row align-items-center justify-content-between">
+        <div>
+            <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+            <p>@Html.DisplayFor(modelItem=>item.Description)</p>
+        </div>
+        <img src="@item.ImageSource" class="img-thumbnail" style="max-width:450px;">
+    </section>
+    }
+
+
+
+
+<!--
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageSource)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageSource)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+-->
